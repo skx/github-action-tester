@@ -31,5 +31,3 @@ action "Execute" {
 }
 
 ```
-
-The expectation is that the docker container will spin up and execute `.github/run-tests.sh` in your repository.  If that script exits cleanly then all is OK, otherwise the result will be marked as a failure.
