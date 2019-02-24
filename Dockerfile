@@ -1,6 +1,6 @@
 FROM golang:latest
 
-LABEL "com.github.actions.name"="PHP Lint"
+LABEL "com.github.actions.name"="github-action-tester"
 LABEL "com.github.actions.description"="Run tests against pull requests"
 LABEL "com.github.actions.icon"="eye"
 LABEL "com.github.actions.color"="gray-dark"
