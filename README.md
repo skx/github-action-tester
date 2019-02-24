@@ -1,10 +1,24 @@
 # GitHub Action for Running tests
 
-GitHub Action implementation of a general purpose testing script by [https://github.com/skx/github-action-tester](@skx/github-action-tester).
+GitHub Action implementation of a general purpose testing script which allows
+you to run a shell-script every time a pull-request is submitted, or updated.
+
+## Sample Output
+
+You can see a sample output here:
+
+* https://github.com/skx/math-compiler/actions
+
 
 ## Usage
 
-You can use it as a Github Action like this:
+There are two steps to enable this action:
+
+* Create the file `.github/main.workflow` in your repository, to enable the action:
+  * This will enable the action.
+* Create the shell-script `.github/run-tests.sh` in your repository, to run the tests.
+  * The exit-code of this script will determine the result.
+
 
 _.github/main.workflow_
 ```
