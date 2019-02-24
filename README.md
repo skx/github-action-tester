@@ -3,7 +3,7 @@
 GitHub Action implementation of a general purpose testing script which allows
 you to run a shell-script every time a pull-request is submitted, or updated.
 
-## Sample Output
+## Sample Configuration & Output
 
 You can see the output of various runs here:
 
