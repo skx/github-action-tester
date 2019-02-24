@@ -1,6 +1,6 @@
 # GitHub Action for Running tests
 
-This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time a pull-request is created/updated, or a commit made to your repository.
+This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time a pull-request is created/updated, or a commit is made to your repository.
 
 
 ## Sample Configuration & Output
@@ -15,7 +15,7 @@ And the corresponding configuration files are:
   * This enables the action, and triggers it to run on pushes or pull-requests.
 * [.github/run-tests.sh](https://raw.githubusercontent.com/skx/math-compiler/master/.github/run-tests.sh)
   * This actually runs some tests.
-     * First of all a standard `go test ./..`
+     * First of all a standard `go test ./...`
      * Then a custom functional-test which exercises the application.
 
 
