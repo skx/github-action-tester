@@ -5,10 +5,18 @@ you to run a shell-script every time a pull-request is submitted, or updated.
 
 ## Sample Output
 
-You can see a sample output here:
+You can see the output of various runs here:
 
 * https://github.com/skx/math-compiler/actions
-* https://github.com/skx/math-compiler/actions
+
+And the corresponding configuration files are:
+
+* [.github/main.workflow](https://raw.githubusercontent.com/skx/math-compiler/master/.github/main.workflow)
+  * This enables the action, and triggers it to run on pushes or pull-requests.
+* [.github/run-tests.sh](https://raw.githubusercontent.com/skx/math-compiler/master/.github/run-tests.sh)
+  * This actually runs some tests.
+     * First of all a standard `go test ./..`
+     * Then a custom functional-test which exercises the application.
 
 
 ## Enabling
