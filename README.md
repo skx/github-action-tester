@@ -1,7 +1,7 @@
 # GitHub Action for Running tests
 
-GitHub Action implementation of a general purpose testing script which allows
-you to run a shell-script every time a pull-request is submitted, or updated.
+This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time a pull-request is created/updated, or a commit made to your repository.
+
 
 ## Sample Configuration & Output
 
@@ -21,14 +21,15 @@ And the corresponding configuration files are:
 
 ## Enabling
 
-There are two steps to enable this action:
+As per the previous section there are two steps required to use this action:
 
-* Create the file `.github/main.workflow` in your repository, to enable the action.
-* Create the shell-script `.github/run-tests.sh` in your repository, to run the tests.
+* Create the file `.github/main.workflow` in your repository.
+  * This is where you enable the action, and specify when it will run.
+* Create the shell-script `.github/run-tests.sh` in your repository, to run your actual tests.
   * The exit-code of this script will determine the result.
 
 
-## Configuration
+## Sample Configuration
 
 The following sample `.github/main.workflow` file will run tests when commits are pushed __and__ when pull-requests are submitted/updated:
 
@@ -51,3 +52,5 @@ action "Execute" {
 }
 
 ```
+
+You don't need to have both sections, but of course if you don't enable the action for at least one case then nothing will happen!
