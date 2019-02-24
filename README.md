@@ -15,7 +15,6 @@ You can see a sample output here:
 There are two steps to enable this action:
 
 * Create the file `.github/main.workflow` in your repository, to enable the action:
-  * This will enable the action.
 * Create the shell-script `.github/run-tests.sh` in your repository, to run the tests.
   * The exit-code of this script will determine the result.
 
