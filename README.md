@@ -8,7 +8,7 @@ You can use it as a Github Action like this:
 
 _.github/main.workflow_
 ```
-workflow "PHP Linting" {
+workflow "Github Tests" {
   resolves = ["Execute"]
   on = "pull_request"
 }
