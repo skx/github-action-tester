@@ -2,6 +2,9 @@
 
 This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time a pull-request is created/updated, or a commit is made to your repository.
 
+The expectation is that this script will run your project-specific tests, and
+the exit code will determine the success/failure result.  A golang-project might contain nothing more than `go test ./...`, while a C-based project might include `make && make test`.
+
 
 ## Sample Configuration & Output
 
