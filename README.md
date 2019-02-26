@@ -6,25 +6,9 @@ The expectation is that this script will run your project-specific tests, and
 the exit code will determine the success/failure result.  A golang-project might contain nothing more than `go test ./...`, while a C-based project might include `make && make test`.
 
 
-## Sample Configuration & Output
-
-You can see the output of various runs here:
-
-* https://github.com/skx/math-compiler/actions
-
-And the corresponding configuration files are:
-
-* [.github/main.workflow](https://raw.githubusercontent.com/skx/math-compiler/master/.github/main.workflow)
-  * This enables the action, and triggers it to run on pushes or pull-requests.
-* [.github/run-tests.sh](https://raw.githubusercontent.com/skx/math-compiler/master/.github/run-tests.sh)
-  * This actually runs some tests.
-     * First of all a standard `go test ./...`
-     * Then a custom functional-test which exercises the application.
-
-
 ## Enabling
 
-As per the previous section there are two steps required to use this action:
+There are two steps required to use this action:
 
 * Create the file `.github/main.workflow` in your repository.
   * This is where you enable the action, and specify when it will run.
@@ -57,3 +41,19 @@ action "Execute" {
 ```
 
 You don't need to have both sections, but of course if you don't enable the action for at least one case then nothing will happen!
+
+
+## Sample Configuration & Output
+
+With these two configuration-files I have configured my [math-compiler](https://github.com/skx/math-compiler) project to run tests every time a commit is pushed, or a new pull-request is created/updated:
+
+* [.github/main.workflow](https://raw.githubusercontent.com/skx/math-compiler/master/.github/main.workflow)
+  * This enables the action, and triggers it to run on pushes or pull-requests.
+* [.github/run-tests.sh](https://raw.githubusercontent.com/skx/math-compiler/master/.github/run-tests.sh)
+  * This actually runs some tests.
+     * First of all a standard `go test ./...`
+     * Then a custom functional-test which exercises the application.
+
+These runs look like this:
+
+![Screenshot](_media/actions.png)
