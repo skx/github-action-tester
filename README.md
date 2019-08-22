@@ -25,7 +25,7 @@ There are two steps required to use this action:
 
 * Enable the action inside your repository.
   * You'll probably want to enable it upon pull-requests, to ensure their quality.
-  * You might also want to enable it to run each time a push is made to your repository, for completenes.
+  * You might also want to enable it to run each time a push is made to your repository, for completeness.
 * Add your project-specific tests to the script `.github/run-tests.sh`.
   * The exit-code of this script will determine the result.
 
