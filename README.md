@@ -2,58 +2,45 @@
 
 This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time a pull-request is created/updated, or a commit is made to your repository.
 
-The expectation is that this script will run your project-specific tests, and
-the exit code will determine the success/failure result.  A golang-project might contain nothing more than `go test ./...`, while a C-based project might include `make && make test`.
+The expectation is that you'll use this action to launch your project-specific tests, by executing a shell-script.  The  exit code of the script will determine the success/failure result.
+
+* A golang-project might contain nothing more than `go test ./...`,
+* A C-based project might include `make && make test`.
 
 
 ## Enabling
 
 There are two steps required to use this action:
 
-* Create the file `.github/main.workflow` in your repository.
-  * This is where you enable the action, and specify when it will run.
-* Create the shell-script `.github/run-tests.sh` in your repository, to run your actual tests.
+* Enable the action inside your repository.
+  * You'll probably want to enable it upon pull-requests, to ensure their quality.
+  * You might want to enable it to run an all pushes, for completeness.
+* Add your project-specific tests to the script `.github/run-tests.sh`.
   * The exit-code of this script will determine the result.
 
 
 ## Sample Configuration
 
-The following sample `.github/main.workflow` file will run tests when commits are pushed __and__ when pull-requests are submitted/updated:
+Defining Github Actions requires that you create a directory `.github/workflows` inside your repository.  Inside the workflow-directory you create files which are processed when various events occur.
+
+For example:
+
+* .`github/workflows/pull_request.yml`
+  * This is used when a pull-request is created/updated upon your repository.
+* `.github/workflows/push.yml`
+  * This is used when a commit is pushed to your repository.
+
+You can use content like this to invoke this action:
 
 ```
-# pushes
-workflow "Push Event" {
-  on = "push"
-  resolves = ["Execute"]
-}
-
-# pull-requests
-workflow "Pull Request" {
-  on = "pull_request"
-  resolves = ["Execute"]
-}
-
-# Run the magic
-action "Execute" {
-  uses = "skx/github-action-tester@master"
-}
-
+on: pull_request
+name: Pull Request
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Test
+      uses: skx/github-action-tester@master
 ```
-
-You don't need to have both sections, but of course if you don't enable the action for at least one case then nothing will happen!
-
-
-## Sample Configuration & Output
-
-With these two configuration-files I have configured my [math-compiler](https://github.com/skx/math-compiler) project to run tests every time a commit is pushed, or a new pull-request is created/updated:
-
-* [.github/main.workflow](https://raw.githubusercontent.com/skx/math-compiler/master/.github/main.workflow)
-  * This enables the action, and triggers it to run on pushes or pull-requests.
-* [.github/run-tests.sh](https://raw.githubusercontent.com/skx/math-compiler/master/.github/run-tests.sh)
-  * This actually runs some tests.
-     * First of all a standard `go test ./...`
-     * Then a custom functional-test which exercises the application.
-
-These runs look like this:
-
-![Screenshot](_media/actions.png)
