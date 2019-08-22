@@ -6,8 +6,12 @@ The expectation is that you'll use this action to launch your project-specific t
 
 For example a golang-project might contain nothing more than:
 
-   #!/bin/sh
-   go test ./...
+    #!/bin/sh
+    # Run the go-vet tool
+    go vet ./..           || exit 1
+    # Run the test-cases
+    go test -race ./...   || exit 1
+    exit 0
 
 Or a C-based project might contain:
 
