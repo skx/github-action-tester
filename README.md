@@ -4,17 +4,24 @@ This repository contains a simple GitHub Action implementation, which allows you
 
 The expectation is that you'll use this action to launch your project-specific tests, by executing a shell-script.  The  exit code of the script will determine the success/failure result.
 
-* A golang-project might contain nothing more than `go test ./...`,
-* A C-based project might include `make && make test`.
+For example a golang-project might contain nothing more than:
+
+   #!/bin/sh
+   go test ./...
+
+Or a C-based project might contain:
+
+    #!/bin/sh
+    make && make test
 
 
-## Enabling
+## Enabling the action
 
 There are two steps required to use this action:
 
 * Enable the action inside your repository.
   * You'll probably want to enable it upon pull-requests, to ensure their quality.
-  * You might want to enable it to run an all pushes, for completeness.
+  * You might also want to enable it to run each time a push is made to your repository, for completenes.
 * Add your project-specific tests to the script `.github/run-tests.sh`.
   * The exit-code of this script will determine the result.
 
@@ -37,10 +44,12 @@ on: pull_request
 name: Pull Request
 jobs:
   test:
-    name: Test
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Test
       uses: skx/github-action-tester@master
 ```
+
+You can also limit the tests to only executing when specific branches are updated, and chain events.  For more details please consult the [Github Actions documentation](https://developer.github.com/actions/).
