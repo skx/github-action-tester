@@ -1,10 +1,12 @@
 # GitHub Action for Running tests
 
-This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time a pull-request is created/updated, or a commit is made to your repository.
+This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time an event occurs within your repository.
 
-The expectation is that you'll use this action to launch your project-specific tests, by executing a shell-script.  The  exit code of the script will determine the success/failure result.
+If your shell-script terminates with an exit-code of 0 that is regarded as a pass, otherwise the action will be marked as a failure.
 
-For example a golang-project might contain nothing more than:
+The expectation is that you'll use this action to launch your project-specific test-cases, ensuring that all pull-requests are tested automatically.
+
+Because the action ultimately just executes a shell-script, contained in your repository, you can be as simple or complex as you can imagine.  For example a [golang](https://golang.org/) project might contain a simple script such as this:
 
     #!/bin/sh
     # Run the go-vet tool
@@ -13,10 +15,12 @@ For example a golang-project might contain nothing more than:
     go test -race ./...   || exit 1
     exit 0
 
-Or a C-based project might contain:
+A C-based project might contain something like this:
 
     #!/bin/sh
     make && make test
+
+But as you can install/invoke arbitrary commands, and update them as your project grows, you can do almost anything you wish.
 
 
 ## Enabling the action
