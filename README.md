@@ -1,6 +1,6 @@
 # GitHub Action for Running tests
 
-This repository contains a simple GitHub Action implementation, which allows you to run a shell-script every time an event occurs within your repository.
+This repository contains a simple GitHub Action which allows you to run a shell-script every time an event occurs within your repository.
 
 If your shell-script terminates with an exit-code of 0 that is regarded as a pass, otherwise the action will be marked as a failure.
 
@@ -13,6 +13,7 @@ Because the action ultimately just executes a shell-script, contained in your re
     go vet ./..           || exit 1
     # Run the test-cases
     go test -race ./...   || exit 1
+    # Everything passed.
     exit 0
 
 A C-based project might contain something like this:
@@ -45,7 +46,7 @@ For example:
 * `.github/workflows/push.yml`
   * This is used when a commit is pushed to your repository.
 
-You can use content like this to invoke this action:
+You can use content like this to invoke the action:
 
 ```
 on: pull_request
