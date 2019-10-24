@@ -4,9 +4,9 @@ This repository contains a simple GitHub Action which allows you to run a shell-
 
 If your shell-script terminates with an exit-code of 0 that is regarded as a pass, otherwise the action will be marked as a failure.
 
-The expectation is that you'll use this action to launch your project-specific test-cases, ensuring that all pull-requests are tested automatically.
+The expectation is that you'll use this action to launch your project-specific test-cases, ensuring that all pull-requests, commits, or both, are tested automatically.
 
-Because the action ultimately just executes a shell-script, contained in your repository, you can be as simple or complex as you can imagine.  For example a [golang](https://golang.org/) project might contain a simple script such as this:
+Because the action ultimately just executes a shell-script contained in your repository, you can be as simple or complex as you can imagine.  For example a [golang](https://golang.org/) project might contain a simple script such as this:
 
     #!/bin/sh
     # Run the go-vet tool
