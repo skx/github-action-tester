@@ -1,0 +1,8 @@
+name: 'github-action-tester'
+description: 'Run tests when pull-requests are opened, or commits pushed.'
+author: 'Steve Kemp'
+branding:
+  icon: eye
+  color: black
+using: 'docker'
+image: 'Dockerfile'
