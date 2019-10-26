@@ -4,5 +4,6 @@ author: 'Steve Kemp'
 branding:
   icon: eye
   color: black
-using: 'docker'
-image: 'Dockerfile'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
