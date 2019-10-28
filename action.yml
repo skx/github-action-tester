@@ -4,6 +4,12 @@ author: 'Steve Kemp'
 branding:
   icon: eye
   color: black
+inputs:
+  script:
+    description: 'The path to the test-script to run, within the repository.'
+    default: '.github/run-tests.sh'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+      - ${{ inputs.script }}
