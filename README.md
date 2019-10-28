@@ -59,7 +59,7 @@ For example:
 * `.github/workflows/push.yml`
   * This is used when a commit is pushed to your repository.
 
-The simplest example of using this action would be to create the file `.github/workflows/pull_request.yml' with the following contents:
+The simplest example of using this action would be to create the file `.github/workflows/pull_request.yml` with the following contents:
 
 ```
 on: pull_request
@@ -74,7 +74,7 @@ jobs:
       uses: skx/github-action-tester@master
 ```
 
-This example will run the default test-script `.github/run-tests.sh` every time a pull-request is created, edited, or updated.
+This example will run the default test-script, `.github/run-tests.sh`, every time a pull-request is created, edited, or updated.
 
 
 
@@ -84,7 +84,7 @@ As noted github actions can be launched on multiple events, for example pushes t
 
 Because you probably wish to run different tests/scripts on these different events it is possible to override the name/path of the shell-script which is executed on a per-event basis.
 
-For example might wish to run thorough tests upon pull-requests, and a smaller subset when a push is made to your `master` branch (on the assumption that commits there are rare, and the usual workflow will have ensured the full-tests will have been executed via pull-requests).
+For example you might wish to run more thorough tests upon pull-requests, and a smaller subset when a push is made to your `master` branch (on the assumption that commits there are rare, and the usual workflow will have ensured the full-tests will have been executed via pull-requests).
 
 As an example you might create a workflow for use solely with pushes to master, in the file `.github/workflows/push.yml`:
 
