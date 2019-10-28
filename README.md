@@ -1,22 +1,32 @@
+
 # GitHub Action for Running tests
 
 This repository contains a simple GitHub Action which allows you to run a shell-script every time an event occurs within your repository.
 
-If your shell-script terminates with an exit-code of 0 that is regarded as a pass, otherwise the action will be marked as a failure.
+* [GitHub Action for Running tests](#github-action-for-running-tests)
+  * [Overview](#overview)
+  * [Enabling the action](#enabling-the-action)
+  * [Sample Configuration](#sample-configuration)
+  * [Advanced Configuration](#advanced-configuration)
+
+
+## Overview
+
+This action allows you to run a shell-script when your workflow action is triggered.  If your script terminates with an exit-code of 0 that is regarded as a pass, otherwise the action will be marked as a failure.
 
 The expectation is that you'll use this action to launch your project-specific test-cases, ensuring that all pull-requests, commits, or both, are tested automatically.
 
-Because the action ultimately executes a shell-script contained in your repository, you can be as simple or complex as you can like.  For example a [golang](https://golang.org/) project might contain a simple script such as this:
+Because the action ultimately executes a shell-script contained in your repository you can be as simple or complex as you can like, for example a [golang](https://golang.org/) project might contain a script such as this:
 
     #!/bin/sh
-    # Run the go-vet tool
+    # Run the go-vet tool.
     go vet ./..           || exit 1
-    # Run the test-cases
+    # Run the test-cases, with race-detection.
     go test -race ./...   || exit 1
-    # Everything passed.
+    # Everything passed, exit cleanly.
     exit 0
 
-A C-based project might contain something like this:
+A C-based project could contain something like this instead:
 
     #!/bin/sh
     make && make test
