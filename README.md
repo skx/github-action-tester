@@ -88,7 +88,7 @@ For example you might wish to run more thorough tests upon pull-requests, and a 
 
 As an example you might create a workflow for use solely with pushes to master, in the file `.github/workflows/push.yml`:
 
-```
+```yml
 on:
   push:
     branches:
