@@ -61,7 +61,7 @@ For example:
 
 The simplest example of using this action would be to create the file `.github/workflows/pull_request.yml` with the following contents:
 
-```
+```yml
 on: pull_request
 name: Pull Request
 jobs:
